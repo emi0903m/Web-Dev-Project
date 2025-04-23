@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Daily Riddle Generator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #e3f2fd, #fff);
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+        }
+
+        .riddle-box {
+            background-color: #ffffff;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            max-width: 600px;
+            transition: all 0.3s ease;
+        }
+
+        .riddle {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .answer {
+            display: none;
+            font-weight: bold;
+            color: #388e3c;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1em;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #388e3c;
+        }
+
+        .footer {
+            margin-top: 50px;
+            color: #888;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧠 Daily Riddle Generator</h1>
+    <div class="riddle-box">
+        <div class="riddle" id="riddle">Click the button to get a riddle!</div>
+        <div class="answer" id="answer">Answer will appear here.</div>
+        <button onclick="getRiddle()">New Riddle</button>
+        <button onclick="revealAnswer()">Show Answer</button>
+    </div>
+
+    <div class="footer">Created in collaboration with ChatGPT 💡</div>
+
+    <script>
+        const riddles = [
+            {
+                question: "I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?",
+                answer: "An echo."
+            },
+            {
+                question: "What has to be broken before you can use it?",
+                answer: "An egg."
+            },
+            {
+                question: "I’m tall when I’m young, and I’m short when I’m old. What am I?",
+                answer: "A candle."
+            },
+            {
+                question: "What has hands but can’t clap?",
+                answer: "A clock."
+            },
+            {
+                question: "The more of me you take, the more you leave behind. What am I?",
+                answer: "Footsteps."
+            }
+        ];
+
+        function getRiddle() {
+            const randomIndex = Math.floor(Math.random() * riddles.length);
+            const riddle = riddles[randomIndex];
+            document.getElementById('riddle').textContent = riddle.question;
+            document.getElementById('answer').textContent = riddle.answer;
+            document.getElementById('answer').style.display = 'none';
+        }
+
+        function revealAnswer() {
+            document.getElementById('answer').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
